@@ -4,7 +4,8 @@ import { revalidatePath } from "next/cache";
 import { getToken } from "../tokenManagement/service";
 import { plantDTO } from "./model";
 import { userDTO } from "../dashboard/model";
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+const BACKEND_URL =
+  process.env.NEXT_PUBLIC_BACKEND_URL || process.env.NEXT_PUBLIC_API_URL;
 
 export const savePlant = async (data: plantDTO) => {
   const token = await getToken();
@@ -70,15 +71,12 @@ export const logWater = async (id: string, name: string) => {
 };
 
 export const getUserByPlantId = async (plantId: string) => {
-  const response = await fetch(
-    `${BACKEND_URL}/myplant/user/${plantId}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
+  const response = await fetch(`${BACKEND_URL}/myplant/user/${plantId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
   if (!response.ok) {
     throw new Error("Failed to fetch user");

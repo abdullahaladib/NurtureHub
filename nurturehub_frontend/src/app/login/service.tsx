@@ -4,7 +4,7 @@ import { tokenManagementService } from "../tokenManagement/service";
 import { LoginDTO } from "./model";
 import { cookies } from "next/headers";
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || process.env.NEXT_PUBLIC_API_URL;
 
 export const login = async (data: LoginDTO) => {
   const response = await fetch(`${BACKEND_URL}/auth/login`, {

@@ -2,7 +2,8 @@
 
 import { RegisterDTO } from "./model";
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+const BACKEND_URL =
+  process.env.NEXT_PUBLIC_BACKEND_URL || process.env.NEXT_PUBLIC_API_URL;
 
 export const signUpService = async (data: RegisterDTO) => {
   const response = await fetch(`${BACKEND_URL}/auth/signup`, {

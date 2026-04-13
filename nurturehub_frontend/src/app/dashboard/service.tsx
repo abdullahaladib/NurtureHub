@@ -1,9 +1,9 @@
 "use server";
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+const BACKEND_URL =
+  process.env.NEXT_PUBLIC_BACKEND_URL || process.env.NEXT_PUBLIC_API_URL;
 import { getToken } from "../tokenManagement/service";
 import { PasswordFormState, userDTO } from "./model";
 import { Post } from "../community/model";
-
 
 export const getUserData = async () => {
   const token = await getToken();
@@ -23,7 +23,6 @@ export const getUserData = async () => {
   return result.data as userDTO;
 };
 
-
 export const updateUser = async (data: userDTO) => {
   const token = await getToken();
   const response = await fetch(`${BACKEND_URL}/profile/update`, {
@@ -38,7 +37,6 @@ export const updateUser = async (data: userDTO) => {
     throw new Error("Failed to update user");
   }
 };
-
 
 export const changePassword = async (data: PasswordFormState) => {
   if (data.newPassword !== data.confirmPassword) {
@@ -60,7 +58,6 @@ export const changePassword = async (data: PasswordFormState) => {
   }
 };
 
-
 export const getSharedPosts = async () => {
   const token = await getToken();
   const response = await fetch(`${BACKEND_URL}/community/shared`, {
@@ -78,8 +75,6 @@ export const getSharedPosts = async () => {
   const result = await response.json();
   return result.data as Post[];
 };
-
-
 
 export const deleteSharedPost = async (postId: string) => {
   const token = await getToken();
