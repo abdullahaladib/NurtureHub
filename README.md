@@ -8,7 +8,6 @@ A modern, intelligent plant care platform that makes gardening accessible, socia
 ![Next.js](https://img.shields.io/badge/Frontend-Next.js-000000?style=flat-square&logo=next.js)
 ![Express](https://img.shields.io/badge/Backend-Express-90c53f?style=flat-square&logo=express)
 ![MongoDB](https://img.shields.io/badge/Database-MongoDB-13aa52?style=flat-square&logo=mongodb)
-![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
 
 **BRAC University | CSE471 Group Project**
 
